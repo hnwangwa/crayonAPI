@@ -27,7 +27,7 @@ class Images extends Component {
 
 		}
 	
-
+	//This will persist captions for specific images
 	saveCaption = () => {
 		localStorage.setItem(this.props.id, this.state.caption);
 

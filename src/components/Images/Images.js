@@ -29,11 +29,12 @@ class Images extends Component {
 	
 
 	saveCaption = () => {
-		localStorage.setItem('caption', this.state.caption);
+		localStorage.setItem(this.props.id, this.state.caption);
+
 	}
 	//This got rid of seeing "null" if localstorage is empty (first time using app) or emptied for any reason
 	retrieveCaption = () => {	
-		const captions = localStorage.getItem('caption');
+		const captions = localStorage.getItem(this.props.id);
 		if (captions !=null) {
 			return <p>Past choices: {captions}</p>
 		}
@@ -49,14 +50,14 @@ class Images extends Component {
 					<Modal show={ this.state.isOpen} onClose={this.toggleModal}>
 						<img src={this.props.url} alt='oh no'>
 							</img>
-								{'Technically, this color is called '+ this.props.title + ', but you could name it something more exciting. Any ideas?'} 
-								<form id="captionForm">
-									<div class="field">
-                        				<input type ="text" name="caption" onChange={this.handleChange.bind(this)} value={this.state.caption} placeholder="ex: Tickle Me Pink"/>
-                       					 <button type="submit" value="send" onClick={this.saveCaption}>Submit your idea!</button>
-                       					 	<br></br><span>{'Your current choice: ' + this.state.caption }</span>
-                       					 		<br></br><span>{this.retrieveCaption()}</span>
-									</div>
+								<span>Technically, this color is called "<i>{this.props.title}</i>", but you could name it something more exciting. Any ideas?</span>
+									<form id="captionForm">
+										<div className="field">
+                        					<input type ="text" name="caption" onChange={this.handleChange.bind(this)} value={this.state.caption} placeholder="ex: Tickle Me Pink"/>
+                       					 		<button type="submit" value="send" onClick={this.saveCaption}>Submit your idea!</button>
+                       					 			<br></br><span>{'Your current choice: ' + this.state.caption }</span>
+                       					 				<br></br><span>{this.retrieveCaption()}</span>
+										</div>
 								</form>			
 					</Modal> 
 			</div>

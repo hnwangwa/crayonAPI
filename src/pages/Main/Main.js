@@ -33,7 +33,7 @@ class Main extends Component {
                         <div className="container">
                           {this.state.images.map(image => (
                             <ListItem key={image._id}>
-                                <Images url={image.thumbnailUrl} title={image.title} className="image" />
+                                <Images url={image.thumbnailUrl} title={image.title} id={image.id} className="image" />
                             </ListItem>
                          ))}
                     </div>

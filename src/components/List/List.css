@@ -1,0 +1,10 @@
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0 4px;
+  float: left;
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center;
+  margin-bottom: 8px;
+}

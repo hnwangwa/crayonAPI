@@ -15,7 +15,6 @@ class Images extends Component {
 		};
 	}
 
-
 	toggleModal = () => {
 		this.setState({
 			isOpen: !this.state.isOpen
@@ -30,18 +29,16 @@ class Images extends Component {
 	//This will persist captions for specific images
 	saveCaption = () => {
 		localStorage.setItem(this.props.id, this.state.caption);
-
+		this.setState({caption: ""})
 	}
 	//This got rid of seeing "null" if localstorage is empty (first time using app) or emptied for any reason
 	retrieveCaption = () => {	
 		const captions = localStorage.getItem(this.props.id);
 		if (captions !=null) {
-			return <p>Past choices: {captions}</p>
+			return <span> You've called this {captions}! Can you think of another name?</span>
 		}
-			return <p>Past choices:</p>;
+			return <span></span>;
 	}
-
-
 
 	render () {
 		return (
@@ -51,14 +48,12 @@ class Images extends Component {
 						<img src={this.props.url} alt='oh no'>
 							</img>
 								<span>Technically, this color is called "<i>{this.props.title}</i>", but you could name it something more exciting. Any ideas?</span>
-									<form id="captionForm">
 										<div className="field">
                         					<input type ="text" name="caption" onChange={this.handleChange.bind(this)} value={this.state.caption} placeholder="ex: Tickle Me Pink"/>
                        					 		<button type="submit" value="send" onClick={this.saveCaption}>Submit your idea!</button>
-                       					 			<br></br><span>{'Your current choice: ' + this.state.caption }</span>
+                       					 			<br></br><span>{this.state.caption}</span>
                        					 				<br></br><span>{this.retrieveCaption()}</span>
 										</div>
-								</form>			
 					</Modal> 
 			</div>
 		);

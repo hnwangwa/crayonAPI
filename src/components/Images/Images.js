@@ -45,7 +45,7 @@ class Images extends Component {
 			<div>
 				<img onClick={ () => this.toggleModal() } src={ this.props.url } alt='error'></img>
 					<Modal show={ this.state.isOpen} onClose={this.toggleModal}>
-						<img src={this.props.url} alt='oh no'>
+						<img src={this.props.bigurl} alt='oh no' style={{width:300,height:300}}>
 							</img>
 								<span>Technically, this color is called "<i>{this.props.title}</i>", but you could name it something more exciting. Any ideas?</span>
 										<div className="field">
